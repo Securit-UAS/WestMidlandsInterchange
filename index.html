@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1018">
+<meta name="description" content="SecurIT interactive drone survey of West Midlands Interchange.">
+<title>West Midlands Interchange | SecurIT Survey Portal</title>
+<script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
+<style>
+:root{color-scheme:dark;--bg:#0b1018;--panel:#111b27;--edge:#273444;--text:#edf3f8;--muted:#a1afbf;--accent:#44b6d8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 Inter,system-ui,-apple-system,sans-serif}
+header{padding:14px clamp(14px,3vw,32px);display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--edge);background:#0e1621;flex-wrap:wrap}
+.logo{width:177px;max-width:48vw;height:auto}.brand-fallback{font-size:23px;font-weight:800;letter-spacing:.03em}.eyebrow{font-size:11px;color:#84cde2;text-transform:uppercase;letter-spacing:.13em}.badge{border:1px solid #315569;padding:7px 12px;border-radius:50px}
+main{max-width:1900px;margin:auto}.intro{padding:20px clamp(14px,3vw,32px);display:flex;align-items:end;justify-content:space-between;gap:18px;flex-wrap:wrap}h1{font-size:clamp(23px,3.3vw,38px);margin:0 0 5px;line-height:1.15}p{margin:0;color:var(--muted)}
+.selector{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:0 clamp(14px,3vw,32px) 14px}.selector label{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+select{background:#172734;color:white;border:1px solid #47768a;border-radius:8px;padding:11px;font:inherit;min-width:min(310px,100%);max-width:100%}
+.stage{position:relative;margin:0 clamp(14px,3vw,32px);height:clamp(370px,64dvh,900px);border:1px solid var(--edge);border-radius:15px;overflow:hidden;background:radial-gradient(ellipse at 50% 22%,#273645,#17212c 45%,#0d151e)}
+.stage:fullscreen{width:100vw;height:100dvh;margin:0;border:0;border-radius:0}
+model-viewer{height:100%;width:100%;display:block;--poster-color:transparent}
+.overlay{position:absolute;top:18px;left:18px;max-width:min(370px,calc(100% - 36px));z-index:2;background:#101a25ed;border:1px solid #344656;border-radius:12px;padding:17px;box-shadow:0 10px 35px #0008}
+.overlay strong{display:block;margin-bottom:7px;font-size:15px}.overlay p{font-size:12px;line-height:1.5;margin-bottom:12px}.progress-track{height:5px;background:#314352;border-radius:5px;overflow:hidden}.progress{background:linear-gradient(90deg,#277b9e,#80dff6);height:100%;width:0%;transition:width .1s}.stat{font-size:11px;margin-top:8px;color:#afc2d2}
+.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;padding:15px clamp(14px,3vw,32px);border-bottom:1px solid var(--edge)}
+button,.action{cursor:pointer;border-radius:9px;padding:10px 14px;background:#192e3b;border:1px solid #476273;color:#edf3f8;font:600 12px system-ui;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:38px}
+button:hover,.action:hover{background:#236884;border-color:#539fbc}.primary{background:#16485c;border-color:#3c8298}.spacer{flex:1}.hint{color:var(--muted);font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:15px clamp(14px,3vw,32px)}
+.card{background:#102331;border:1px solid #2e4d60;border-radius:12px;padding:19px;display:flex;flex-direction:column;gap:10px}.card h2{font-size:16px;margin:0}.card p{font-size:12px;flex:1;line-height:1.55}.card small{font-size:11px;color:#94acbd}.actions{display:flex;gap:8px;flex-wrap:wrap}.action.disabled{opacity:.5;cursor:not-allowed;pointer-events:none}
+footer{padding:15px clamp(14px,3vw,32px) 23px;color:#8193a4;font-size:11px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:900px){.cards{grid-template-columns:1fr}}@media(max-width:640px){.hint,.badge{display:none}.stage{margin:0 10px;height:56dvh}.cards{margin:12px 10px}.selector select{width:100%}.intro,.selector,.controls,footer{padding-left:14px;padding-right:14px}}
+</style>
+</head>
+<body>
+<header><div><img class="logo" src="./assets/securit-logo.png" alt="SecurIT" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><span class="brand-fallback" hidden>SecurIT</span><div class="eyebrow">Survey &amp; 3D visualisation</div></div><div class="badge eyebrow">Interactive 3D survey</div></header>
+<main>
+<div class="intro"><div><div class="eyebrow">Project overview / November 2026</div><h1>West Midlands Interchange</h1><p>Drone-derived site visualisation · 12 survey views · Select an area to explore</p></div><p>Visual planning only · Not for engineering measurement</p></div>
+<div class="selector"><label for="plot">Survey area</label><select id="plot" aria-label="Choose a survey area"></select><span class="eyebrow" id="availability">Master overview</span></div>
+<section class="stage" id="stage" aria-label="Interactive three-dimensional survey viewer">
+<model-viewer id="model" alt="West Midlands Interchange survey model" camera-controls touch-action="pan-y" shadow-intensity=".35" exposure="1" camera-orbit="0deg 42deg auto" field-of-view="30deg" interaction-prompt="auto"></model-viewer>
+<div class="overlay" id="loading"><strong id="loadTitle">Awaiting master model files</strong><p id="loadDescription">The portal is ready. Upload the GLB segments to enable the interactive view.</p><div class="progress-track"><div class="progress" id="progress"></div></div><div class="stat" id="stat" role="status">Model files not yet uploaded</div><button type="button" id="retry" hidden>Retry loading</button></div>
+</section>
+<nav class="controls" aria-label="3D model navigation"><button type="button" class="primary" id="overview">↗ Overview</button><button type="button" id="top">⊞ Overhead</button><button type="button" id="angle">◫ Low angle</button><button type="button" id="tour" aria-pressed="false">⟳ Auto orbit</button><span class="spacer"></span><span class="hint">Drag to orbit · Scroll to zoom · Right-drag to pan</span><button type="button" id="fullscreen">⛶ Full screen</button><button type="button" id="copy">⧉ Copy link</button></nav>
+<section class="cards" aria-label="Survey data and downloads">
+<article class="card"><h2>Interactive 3D overview</h2><p id="modelDetails">Optimised interactive model for site familiarisation and planning. Select the master or an individual plot above.</p><small>Presentation model. The master water surface includes a visual-only reconstruction repair.</small></article>
+<article class="card"><h2>DroneDeploy survey source</h2><p>Open the corresponding DroneDeploy project for original imagery, mesh, point cloud and other source exports, subject to its access permissions.</p><div class="actions"><a id="droneLink" class="action disabled" aria-disabled="true">Project link pending</a></div><small>Source files are not included in the optimised 3D viewer.</small></article>
+<article class="card"><h2>Survey PDF map</h2><p>Download the corresponding high-resolution PDF map when supplied.</p><div class="actions"><a id="pdfLink" class="action disabled" aria-disabled="true">Map pending</a></div><small>Not a substitute for measured engineering or topographic data.</small></article>
+</section></main>
+<footer><div>SecurIT · Survey visualisation for site and security planning. Do not measure from the cosmetically repaired model.</div><div>© 2026 SecurIT · West Midlands Interchange</div></footer>
+<script src="./config.js"></script>
+<script>
+'use strict';
+const model=document.getElementById('model'),select=document.getElementById('plot'),loading=document.getElementById('loading'),progress=document.getElementById('progress'),stat=document.getElementById('stat'),retry=document.getElementById('retry');
+const configs=Array.isArray(window.WMI_SURVEYS)?window.WMI_SURVEYS:[];
+let selected=null,abortController=null,blobUrl=null,requestId=0;
+const mib=n=>(n/1048576).toFixed(1);
+function buttonLink(id,url,label,missing){const el=document.getElementById(id);el.textContent=url?label:missing;if(url){el.href=url;el.classList.remove('disabled');el.removeAttribute('aria-disabled');el.setAttribute('target','_blank');el.setAttribute('rel','noopener noreferrer')}else{el.removeAttribute('href');el.classList.add('disabled');el.setAttribute('aria-disabled','true')}}
+function stopTour(){model.autoRotate=false;const b=document.getElementById('tour');b.setAttribute('aria-pressed','false');b.textContent='⟳ Auto orbit'}
+function showError(title,description,detail){loading.hidden=false;document.getElementById('loadTitle').textContent=title;document.getElementById('loadDescription').textContent=description;stat.textContent=detail;stat.style.color='#ffbca7';retry.hidden=false}
+async function loadArea(area){const id=++requestId;selected=area;const old=blobUrl;blobUrl=null;abortController?.abort();abortController=new AbortController();model.removeAttribute('src');if(old)URL.revokeObjectURL(old);stopTour();model.cameraOrbit='0deg 42deg auto';model.cameraTarget='auto';progress.style.width='0%';stat.style.color='';retry.hidden=true;loading.hidden=false;
+document.getElementById('availability').textContent=area.name;document.getElementById('modelDetails').textContent=area.description||'Optimised interactive survey model for site familiarisation.';buttonLink('droneLink',area.droneDeployUrl,'Open DroneDeploy','Project link pending');buttonLink('pdfLink',area.pdfUrl,'Download PDF map','Map pending');
+document.getElementById('loadTitle').textContent='Preparing '+area.name;document.getElementById('loadDescription').textContent='Model segments are being assembled for interactive viewing.';stat.textContent='Starting…';
+const parts=area.model?.parts;if(!Array.isArray(parts)||!parts.length){showError('3D model pending','This survey area has not yet been uploaded.','Choose another area or return when its model is available.');retry.hidden=true;return}
+try{
+const pieces=[];let received=0;const total=area.model.bytes||0;
+for(const path of parts){const res=await fetch(path,{signal:abortController.signal,cache:'force-cache'});if(!res.ok)throw new Error(path+' returned HTTP '+res.status);const data=await res.arrayBuffer();if(id!==requestId)return;pieces.push(data);received+=data.byteLength;stat.textContent='Downloaded '+mib(received)+' MiB'+(total?' of '+mib(total)+' MiB':'');if(total)progress.style.width=Math.min(94,received/total*94)+'%'}
+const combined=new Blob(pieces,{type:'model/gltf-binary'});if(total&&combined.size!==total)throw new Error('Incomplete model: expected '+total+' bytes, got '+combined.size);
+if(id!==requestId)return;blobUrl=URL.createObjectURL(combined);progress.style.width='96%';stat.textContent='Preparing interactive view…';model.src=blobUrl;
+}catch(err){if(err.name==='AbortError'||id!==requestId)return;showError('Unable to load the 3D model','Please check all model chunks are uploaded and available.',err.message);console.error(err)}
+}
+model.addEventListener('load',()=>{loading.hidden=true;progress.style.width='100%'});
+model.addEventListener('error',()=>{showError('Unable to display the model','Try another browser with hardware acceleration enabled.','The model could not be rendered.')});
+select.addEventListener('change',()=>{const area=configs.find(a=>a.id===select.value);if(area){const url=new URL(location.href);url.searchParams.set('plot',area.id);history.replaceState(null,'',url);loadArea(area)}});
+retry.onclick=()=>{if(selected)loadArea(selected)};
+document.getElementById('overview').onclick=()=>{stopTour();model.cameraOrbit='0deg 42deg auto';model.cameraTarget='auto';model.fieldOfView='30deg'};
+document.getElementById('top').onclick=()=>{stopTour();model.cameraOrbit='0deg 0deg auto';model.cameraTarget='auto'};
+document.getElementById('angle').onclick=()=>{stopTour();model.cameraOrbit='55deg 73deg auto';model.cameraTarget='auto'};
+document.getElementById('tour').onclick=()=>{model.autoRotate=!model.autoRotate;const b=document.getElementById('tour');b.setAttribute('aria-pressed',String(model.autoRotate));b.textContent=model.autoRotate?'Ⅱ Stop orbit':'⟳ Auto orbit'};
+document.getElementById('fullscreen').onclick=()=>document.fullscreenElement?document.exitFullscreen():document.getElementById('stage').requestFullscreen?.();
+document.getElementById('copy').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);const b=document.getElementById('copy');b.textContent='✓ Copied';setTimeout(()=>b.textContent='⧉ Copy link',1700)}catch{window.prompt('Copy link',location.href)}};
+configs.forEach(a=>{const opt=document.createElement('option');opt.value=a.id;opt.textContent=a.name;select.appendChild(opt)});
+if(configs.length){const requested=new URLSearchParams(location.search).get('plot');const found=configs.find(a=>a.id===requested)||configs[0];select.value=found.id;loadArea(found)}else showError('Configuration pending','No survey areas have been configured.','Add survey definitions in config.js');
+</script></body></html>
