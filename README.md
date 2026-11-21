@@ -15,4 +15,4 @@ Portal scaffold in progress. The optimised master GLB is held locally and will b
 - `assets/models/master/master.partaa` … — split GLB (to be uploaded)
 - `maps/` — optional PDF plans
 
-Hosted publicly on GitHub Pages after Pages is enabled in the repository settings.
+Hosted publicly on GitHub Pages after Pages is enabled in the repository settings .
