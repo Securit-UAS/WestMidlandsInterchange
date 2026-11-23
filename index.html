@@ -60,7 +60,7 @@ footer{padding:15px clamp(14px,3vw,32px) 23px;color:#8193a4;font-size:11px;displ
 <article class="card"><h2>Survey PDF map</h2><p>Download the orthomosaic PDF for the selected survey area.</p><div class="actions"><a id="pdfLink" class="action disabled" aria-disabled="true">Map pending</a></div><small>Not a substitute for measured engineering or topographic data.</small></article>
 </section></main>
 <footer><div>Securit · Survey visualisation for site and security planning. Do not measure from the cosmetically repaired model.</div><div>© 2026 Securit · West Midlands Interchange</div></footer>
-<script src="./config.js?v=20261123-1203"></script>
+<script src="./config.js?v=20261123-1208"></script>
 <script>
 'use strict';
 const model=document.getElementById('model'),select=document.getElementById('plot'),loading=document.getElementById('loading'),progress=document.getElementById('progress'),stat=document.getElementById('stat'),retry=document.getElementById('retry');
@@ -70,7 +70,7 @@ const introArt=document.getElementById('introArt');
 // Lightweight vector terrain artwork. No raster download, and never misrepresents actual survey geometry.
 (function drawTerrain(){const svg=document.getElementById('terrainArt'),ns='http://www.w3.org/2000/svg';const project=(u,v)=>{const h=30*Math.sin(u*.016)*Math.cos(v*.019)+44*Math.exp(-((u-540)**2+(v-275)**2)/32000)+18*Math.sin((u+v)*.026);return [500+(u-500)*.86+(v-300)*.50,315+(v-300)*.52-(u-500)*.20-h]};for(let k=0;k<=22;k++){for(const axis of [0,1]){const pts=[];for(let j=0;j<=90;j++){const u=axis?k*45:j*11.1,v=axis?j*6.7:k*27.3;const p=project(u,v);pts.push((j?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1))}const path=document.createElementNS(ns,'path');path.setAttribute('d',pts.join(' '));path.setAttribute('class','grid-line'+(k%5===0?' major':''));svg.appendChild(path)}}})();
 const mib=n=>(n/1048576).toFixed(1);
-const assetVersion='20261123-1203'; // Increment when model assets change; unchanged assets may remain cached.
+const assetVersion='20261123-1208'; // Increment when model assets change; unchanged assets may remain cached.
 function buttonLink(id,url,label,missing){const el=document.getElementById(id);el.textContent=url?label:missing;if(url){el.href=url;el.classList.remove('disabled');el.removeAttribute('aria-disabled');el.setAttribute('target','_blank');el.setAttribute('rel','noopener noreferrer')}else{el.removeAttribute('href');el.classList.add('disabled');el.setAttribute('aria-disabled','true')}}
 function stopTour(){model.autoRotate=false;const b=document.getElementById('tour');b.setAttribute('aria-pressed','false');b.textContent='⟳ Auto orbit'}
 function showError(title,description,detail){loading.hidden=false;document.getElementById('loadTitle').textContent=title;document.getElementById('loadDescription').textContent=description;stat.textContent=detail;stat.style.color='#ffbca7';retry.hidden=false}
