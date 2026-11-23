@@ -45,13 +45,14 @@ footer{padding:15px clamp(14px,3vw,32px) 23px;color:#8193a4;font-size:11px;displ
 @keyframes terrain-scan{0%{top:10%;opacity:0}12%{opacity:.9}85%{opacity:.7}100%{top:90%;opacity:0}}
 @media(prefers-reduced-motion:reduce){.intro-art svg,.intro-art .scan{animation:none}.intro-art{transition:none}}
 .shot-dialog{background:#101a25;color:#edf3f8;border:1px solid #476273;border-radius:14px;width:min(560px,calc(100vw - 32px));padding:24px;box-shadow:0 20px 80px #000b}.shot-dialog::backdrop{background:#03070dc9}.shot-dialog h2{margin:0 0 8px;font-size:20px}.shot-dialog p{font-size:12px;margin-bottom:16px}.shot-dialog textarea{width:100%;min-height:170px;resize:vertical;background:#0b1420;border:1px solid #476273;border-radius:8px;padding:12px;color:#edf3f8;font:13px/1.5 system-ui}.shot-dialog .actions{margin-top:15px;justify-content:flex-end}
+.planner-link{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:#effaff;background:#17455c;border:1px solid #64cbe9;border-radius:8px;padding:10px 15px;font-size:13px;font-weight:700;margin-left:auto;transition:box-shadow .18s,border-color .18s,transform .18s}.planner-link:hover{border-color:#ff6464;box-shadow:0 0 14px #ff444477;transform:translateY(-1px)}
 </style>
 </head>
 <body>
 <header><div><img class="logo" src="./assets/securit-logo.png" alt="Securit" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><span class="brand-fallback" hidden>Securit</span><div class="eyebrow">Survey &amp; 3D visualisation</div></div><div class="badge eyebrow">Interactive 3D survey</div></header>
 <main>
 <div class="intro"><div><div class="eyebrow">Project overview / November 2026</div><h1>West Midlands Interchange</h1><p>Drone-derived site visualisation · 10 map selections · Select an area to download</p></div></div>
-<div class="selector"><label for="plot">Survey area</label><select id="plot" aria-label="Choose a survey area"></select><span class="eyebrow" id="availability">Master overview</span></div>
+<div class="selector"><label for="plot">Survey area</label><select id="plot" aria-label="Choose a survey area"></select><span class="eyebrow" id="availability">Master overview</span><a class="planner-link" href="./planner/">▦ Open 2D Site Planner</a></div>
 <section class="stage" id="stage" aria-label="Interactive three-dimensional survey viewer">
 <model-viewer id="model" alt="West Midlands Interchange survey model" camera-controls touch-action="pan-y" shadow-intensity=".35" exposure="1" camera-orbit="0deg 45deg auto" min-camera-orbit="auto auto 0.1m" max-camera-orbit="auto auto auto" rotation-per-second="3deg" field-of-view="30deg" interaction-prompt="auto"></model-viewer>
 <div class="intro-art" id="introArt" aria-hidden="true"><svg id="terrainArt" viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet" role="presentation"></svg><div class="scan"></div><div class="art-caption">Reconstructing survey terrain</div></div>
