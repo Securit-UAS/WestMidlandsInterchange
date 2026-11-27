@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="theme-color" content="#0b1018">
 <meta name="description" content="Securit interactive drone survey of West Midlands Interchange.">
-<title>West Midlands Interchange | Securit Survey Portal</title>
+<title>West Midlands Interchange | TALOS Survey Portal</title>
 <script type="module" src="https://unpkg.com/@google/model-viewer@4.1.0/dist/model-viewer.min.js"></script>
 <style>
 :root{color-scheme:dark;--bg:#0b1018;--panel:#111b27;--edge:#273444;--text:#edf3f8;--muted:#a1afbf;--accent:#44b6d8}
@@ -46,10 +46,44 @@ footer{padding:15px clamp(14px,3vw,32px) 23px;color:#8193a4;font-size:11px;displ
 @media(prefers-reduced-motion:reduce){.intro-art svg,.intro-art .scan{animation:none}.intro-art{transition:none}}
 .shot-dialog{background:#101a25;color:#edf3f8;border:1px solid #476273;border-radius:14px;width:min(560px,calc(100vw - 32px));padding:24px;box-shadow:0 20px 80px #000b}.shot-dialog::backdrop{background:#03070dc9}.shot-dialog h2{margin:0 0 8px;font-size:20px}.shot-dialog p{font-size:12px;margin-bottom:16px}.shot-dialog textarea{width:100%;min-height:170px;resize:vertical;background:#0b1420;border:1px solid #476273;border-radius:8px;padding:12px;color:#edf3f8;font:13px/1.5 system-ui}.shot-dialog .actions{margin-top:15px;justify-content:flex-end}
 .planner-link{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:#effaff;background:#17455c;border:1px solid #64cbe9;border-radius:8px;padding:10px 15px;font-size:13px;font-weight:700;margin-left:auto;transition:box-shadow .18s,border-color .18s,transform .18s}.planner-link:hover{border-color:#ff6464;box-shadow:0 0 14px #ff444477;transform:translateY(-1px)}
+
+/* TALOS Survey shared visual standard v1 */
+:root{--pad:clamp(16px,2.2vw,36px)}
+body{font:14px/1.5 Inter,system-ui,-apple-system,sans-serif}
+main,.app>.intro,.app>.planner-selector,.app>.stage,.app>.control-panel,.app>.survey-access{width:calc(100% - 2 * var(--pad));max-width:2400px;margin-inline:auto}
+main{width:100%;max-width:calc(2400px + 2 * var(--pad))}
+header,.top{padding:14px var(--pad);background:#0e1621;min-height:100px}
+.logo,.securit-logo{width:177px;max-width:48vw;height:auto}
+.brand-sub,header .eyebrow{font-size:11px;color:#84cde2;letter-spacing:.13em;text-transform:uppercase}
+.securit-logo-group{align-items:flex-start;gap:3px}
+.intro,.app>.intro{padding:20px 0 14px;margin-inline:var(--pad);width:auto}
+.selector,.planner-selector,.app>.planner-selector{padding:0 0 14px;margin:0 var(--pad);width:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.app>.intro,.app>.planner-selector{margin-inline:auto;width:calc(100% - 2 * var(--pad))}
+.intro h1,h1{font-size:clamp(24px,2.2vw,38px);font-weight:750;line-height:1.15;margin:0 0 5px}
+.intro p{font-size:14px;color:var(--muted);margin:0}
+.stage,.app>.stage{height:clamp(370px,64dvh,900px);min-height:0;border-radius:15px}
+.stage:fullscreen,.app>.stage:fullscreen{width:100vw;max-width:none;height:100dvh;margin:0;border:0;border-radius:0}
+.controls,.control-panel,.app>.control-panel{background:transparent;padding:14px 0;gap:9px;margin-inline:var(--pad);width:auto;border-bottom:1px solid var(--edge)}
+.app>.control-panel{margin-inline:auto;width:calc(100% - 2 * var(--pad))}
+.cards,.survey-access,.app>.survey-access{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-block:15px}
+.card,.access-card{background:#102331;border:1px solid #2e4d60;border-radius:12px;padding:19px;gap:10px}
+.card h2,.access-card h2{font-size:16px;margin:0}
+.card p,.access-card p{color:#a1afbf;font-size:12px;line-height:1.55}
+button,.action,.access-card a,.planner-link{font:600 12px system-ui;min-height:38px;padding:10px 14px;border:1px solid #476273;border-radius:9px;background:#192e3b;color:#edf3f8;text-decoration:none;transition:background-color .2s,border-color .2s,box-shadow .2s,transform .2s}
+button.primary,.primary,.planner-link{background:#16485c;border-color:#3c8298}
+.planner-link{margin-left:auto}
+button:hover:not(:disabled),.action:hover:not(.disabled),.access-card a:hover,.planner-link:hover{background:#43232b;border-color:#ff4c5b;box-shadow:0 0 0 1px #ff4c5b55,0 0 13px #ff263f88,0 0 26px #ff263f44;transform:translateY(-1px)}
+button:focus-visible,.action:focus-visible,.access-card a:focus-visible,.planner-link:focus-visible{outline:2px solid #ff6571;outline-offset:3px}
+footer,.foot{padding:15px var(--pad) 23px;color:#8193a4;font-size:11px}
+@media(min-width:2472px){main{max-width:2472px}.app>.intro,.app>.planner-selector{max-width:2400px}}
+@media(max-width:900px){.cards,.survey-access,.app>.survey-access{grid-template-columns:1fr}}
+@media(max-width:640px){.stage,.app>.stage{height:56dvh;min-height:280px}.hint,.badge,.label{display:none}.planner-link{margin-left:0}.intro h1{font-size:25px}}
+@media(prefers-reduced-motion:reduce){button,.action,.access-card a,.planner-link{transition:none}button:hover:not(:disabled),.action:hover:not(.disabled),.access-card a:hover,.planner-link:hover{transform:none}}
+
 </style>
 </head>
 <body>
-<header><div><img class="logo" src="./assets/securit-logo.png" alt="Securit" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><span class="brand-fallback" hidden>Securit</span><div class="eyebrow">Survey &amp; 3D visualisation</div></div><div class="badge eyebrow">Interactive 3D survey</div></header>
+<header><div><img class="logo" src="./assets/securit-logo.png" alt="Securit" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><span class="brand-fallback" hidden>Securit</span><div class="eyebrow">TALOS · Survey &amp; 3D visualisation</div></div><div class="badge eyebrow">Interactive 3D survey</div></header>
 <main>
 <div class="intro"><div><div class="eyebrow">Project overview / November 2026</div><h1>West Midlands Interchange</h1><p>Drone-derived site visualisation · 10 map selections · Select an area to download</p></div></div>
 <div class="selector"><label for="plot">Survey area</label><select id="plot" aria-label="Choose a survey area"></select><span class="eyebrow" id="availability">Master overview</span><a class="planner-link" href="./planner/v2.html">▦ Open 2D Site Planner</a></div>
@@ -59,12 +93,12 @@ footer{padding:15px clamp(14px,3vw,32px) 23px;color:#8193a4;font-size:11px;displ
 <div class="overlay" id="loading"><strong id="loadTitle">Awaiting master model files</strong><p id="loadDescription">The portal is ready. Upload the GLB segments to enable the interactive view.</p><div class="progress-track"><div class="progress" id="progress"></div></div><div class="stat" id="stat" role="status">Model files not yet uploaded</div><button type="button" id="retry" hidden>Retry loading</button></div>
 </section>
 <nav class="controls" aria-label="3D model navigation"><button type="button" class="primary" id="overview">↗ Overview</button><button type="button" id="top">⊞ Overhead</button><button type="button" id="angle">◫ Low angle</button><button type="button" id="tour" aria-pressed="false">⟳ Auto orbit</button><span class="spacer"></span><span class="hint">Drag to orbit · Scroll to zoom · Right-drag to pan · Double-click to focus</span><button type="button" id="fullscreen">⛶ Full screen</button><button type="button" id="shareView">⌖ Share current view</button><button type="button" id="screenshot">▣ Save screenshot</button></nav>
-<section class="cards" aria-label="Survey data and downloads">
+<section class="cards" aria-label="Survey data and downloads"><article class="card"><h2>2D security planning</h2><p>Open the interactive security planner for site design and asset placement.</p><div class="actions"><a class="action" href="./planner/v2.html">Open 2D Site Planner</a></div></article>
 <article class="card"><h2>Interactive 3D overview</h2><p id="modelDetails">Optimised interactive model for site familiarisation and planning. Select the master or an individual plot above.</p><small>Presentation model. The master water surface includes a visual-only reconstruction repair.</small></article>
 <article class="card"><h2>DroneDeploy survey source</h2><p>Open the corresponding DroneDeploy project for original imagery, mesh, point cloud and other source exports, subject to its access permissions.</p><div class="actions"><a id="droneLink" class="action disabled" aria-disabled="true">Project link pending</a></div></article>
 <article class="card"><h2>Survey PDF map</h2><p>Download the orthomosaic PDF for the selected survey area.</p><div class="actions"><a id="pdfLink" class="action disabled" aria-disabled="true">Map pending</a></div></article>
 </section></main><dialog id="shotDialog" class="shot-dialog" aria-labelledby="shotTitle"><h2 id="shotTitle">Export annotated screenshot</h2><p>Add site observations for the drawing-style notes panel. Leave blank if no notes are needed.</p><textarea id="shotNotes" maxlength="3500" placeholder="Site observations…"></textarea><div class="actions"><button type="button" id="shotCancel">Cancel</button><button type="button" class="primary" id="shotExport">Export PNG</button></div></dialog>
-<footer><div>Securit · Survey visualisation for site and security planning. Do not measure from the cosmetically repaired model.</div><div>© 2026 Securit · West Midlands Interchange</div></footer>
+<footer><div>Securit · Survey visualisation for site and security planning. Do not measure from the cosmetically repaired model.</div><div>© 2026 Securit · TALOS · West Midlands Interchange</div></footer>
 <script src="./config.js?v=20261123-1220"></script>
 <script>
 'use strict';
